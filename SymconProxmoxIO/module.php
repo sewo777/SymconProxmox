@@ -7,8 +7,8 @@ declare(strict_types=1);
 		{
 			$this->RegisterPropertyString('Url', '');
 			$this->RegisterPropertyInteger('Port', 8006);
-            $this->RegisterPropertyString('Username', '');
-            $this->RegisterPropertyString('Password', '');
+            		$this->RegisterPropertyString('Username', '');
+            		$this->RegisterPropertyString('Password', '');
             
 			$this->RegisterPropertyBoolean('Active', false);
 			//Never delete this line!
