@@ -65,7 +65,6 @@ declare(strict_types=1);
 			$username = urlencode($this->ReadPropertyString('Username'));
             $password = urlencode($this->ReadPropertyString('Password'));
 
-			/*
 			$curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -96,7 +95,6 @@ declare(strict_types=1);
 				// store the token
 				$this->WriteAttributeString('Token', $token);
 			}
-			*/
 			//return $token;
 		}
 	}
