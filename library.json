@@ -1,0 +1,12 @@
+{
+    "id": "{85D3D2AC-4BAC-1AC7-DA72-EE9AF91A7AB3}",
+    "name": "SymconProxmox",
+    "author": "sewo",
+    "url": "",
+    "compatibility": {
+        "version": "5.5"
+    },
+    "version": "1.0",
+    "build": 0,
+    "date": 0
+}

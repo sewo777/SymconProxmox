@@ -1,0 +1,16 @@
+{
+    "id": "{82FDAF87-DCB0-4CD3-7F59-4EC2CBE682D6}",
+    "name": "SymconProxmoxNode",
+    "type": 3,
+    "vendor": "Proxmox",
+    "aliases": ["ProxmoxNode"],
+    "parentRequirements": [
+        "{A8F28772-131A-351B-DEC1-BA2995EAE4C3}"
+    ],
+    "childRequirements": [],
+    "implemented": [
+        "{F32EAE78-97AA-E390-804A-8600121F361A}"
+    ],
+    "prefix": "PVENODE",
+    "url": ""
+}

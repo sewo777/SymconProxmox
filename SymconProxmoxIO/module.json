@@ -1,0 +1,16 @@
+{
+    "id": "{03F746E8-3F0F-C53E-8F1A-BF9A4DAFAC76}",
+    "name": "SymconProxmoxIO",
+    "type": 1,
+    "vendor": "Proxmox",
+    "aliases": ["ProxmoxIO"],
+    "parentRequirements": [],
+    "childRequirements": [
+        "{F32EAE78-97AA-E390-804A-8600121F361A}"
+    ],
+    "implemented": [
+        "{A8F28772-131A-351B-DEC1-BA2995EAE4C3}"
+    ],
+    "prefix": "PVEIO",
+    "url": ""
+}
