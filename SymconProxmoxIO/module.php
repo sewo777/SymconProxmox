@@ -7,10 +7,14 @@ declare(strict_types=1);
 		{
 			$this->RegisterPropertyString('Url', '');
 			$this->RegisterPropertyInteger('Port', 8006);
-            		$this->RegisterPropertyString('Username', '');
-            		$this->RegisterPropertyString('Password', '');
-            
+			$this->RegisterPropertyString('Username', '');
+			$this->RegisterPropertyString('Password', '');
 			$this->RegisterPropertyBoolean('Active', false);
+			// Attribute to store the token
+			$this->RegisterAttributeString('Token','');
+			// timer to Update the Token 300000 = 300 s = 5 min
+			$this->RegisterTimer('UpdateToken', 300000, 'PVEIO_ReNewToken($this->InstanceID);');
+
 			//Never delete this line!
 			parent::Create();
 		}
@@ -29,17 +33,32 @@ declare(strict_types=1);
 
 		public function ForwardData($JSONString)
 		{
-			$data = json_decode($JSONString);
-			IPS_LogMessage('IO FRWD', utf8_decode($data->Buffer));
-				
+			$recived = json_decode($JSONString);
+			$data = utf8_decode($recived->Buffer);
+			$this->SendDebug(__FUNCTION__, 'I got from the Node:' , 0);
+			$this->SendDebug(__FUNCTION__,  $data, 0);
 			
+			$token = $this->ReadAttributeString('Token');
+			$this->SendDebug(__FUNCTION__, 'I have this token:' , 0);
+			$this->SendDebug(__FUNCTION__, $token , 0);
+			
+			// now i can do somting with $data and $token
+			$returndata = 'Success';
+
+			$this->SendDebug(__FUNCTION__, 'I send back to the node:' , 0);
+			$this->SendDebug(__FUNCTION__, $returndata , 0);
+			
+			// send back to the node:
+			return $returndata;
 		}
 
 		public function Send(string $Text)
 		{
 			$this->SendDataToChildren(json_encode(['DataID' => '{F32EAE78-97AA-E390-804A-8600121F361A}', 'Buffer' => $Text]));
 		}
-		public function Token()
+
+		// this function runs cyclic as defined in create()
+		public function ReNewToken()
 		{
 			$url = $this->ReadPropertyString('Url');
 			$port = $this->ReadPropertyInteger('Port');
@@ -73,8 +92,9 @@ declare(strict_types=1);
 			if ($httpcode == 200){
 				$json = json_decode($result, true);
 				$token = ($json['data']['CSRFPreventionToken']);
+				// store the token
+				$this->WriteAttributeString('Token', $token);
 			}
-
-			return $token;
+			//return $token;
 		}
 	}

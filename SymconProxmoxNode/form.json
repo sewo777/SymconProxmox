@@ -54,7 +54,7 @@
         {
         "type": "Button",
         "label": "Update",
-        "onClick": "PVENODE_Send($id);"           
+        "onClick": "PVENODE_Update($id);"           
     }
 ],
     "status": []
