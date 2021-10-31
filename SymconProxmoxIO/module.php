@@ -15,7 +15,7 @@ declare(strict_types=1);
 			$this->RegisterAttributeString('Tiket_Status','');
 
 			// timer to Update the Token 300000 = 300 s = 5 min
-			$this->RegisterTimer('UpdateToken', 300000, 'PVEIO_ReNewToken($_IPS[\'TARGET\']);');
+			$this->RegisterTimer('UpdateToken', 1800000, 'PVEIO_ReNewToken($_IPS[\'TARGET\']);');
 
 			//Never delete this line!
 			parent::Create();
@@ -75,6 +75,7 @@ declare(strict_types=1);
 			else {
 
 				$returndata = '';
+				$this->ReNewToken();
 
 			}
 			// now i can do somting with $data and $token
