@@ -1,8 +1,15 @@
 {
     "translations": {
         "de": {
-            "Translation 1": "Übersetzung 1",
-            "Translation 2": "Übersetzung 2"
+            "Memory Total": "Arbeitsspeicher Gesamt",
+            "Memory Used": "Arbeitsspeicher in Verwendung",
+            "Memory Free": "Arbeitsspeicher Verfügbar",
+            "Uptime": "Betriebszeit",
+            "CPU": "CPU",
+            "CPU Sockets": "CPU Sockets",
+            "CPU Cores": "CPU Kerne",
+            "CPU(s)": "CPU(s)"
+
         }
     }
 }
