@@ -28,7 +28,6 @@
 		{
 			"type": "Button",
 			"label": "Read Token",
-			"onClick": "echo PVEIO_Token($id);"           
 			"onClick": "echo PVEIO_ReNewToken($id);"           
 		}
 	],
