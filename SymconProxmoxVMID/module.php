@@ -25,7 +25,7 @@ declare(strict_types=1);
 			$this->RegisterPropertyInteger('UpdateInterval', 60);
 			$this->RegisterTimer('Update', $this->ReadPropertyInteger('UpdateInterval') * 1000, 'PVEID_Update($_IPS[\'TARGET\']);');
        
-			$this->RequireParent('{03F746E8-3F0F-C53E-8F1A-BF9A4DAFAC76}');
+			$this->ConnectParent('{03F746E8-3F0F-C53E-8F1A-BF9A4DAFAC76}');
 
 		}
 
