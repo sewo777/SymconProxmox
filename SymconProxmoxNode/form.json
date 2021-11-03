@@ -105,6 +105,24 @@
                             "type": "CheckBox",
                             "name": "Memory Free",
                             "caption": "Memory Free"
+                        },
+
+                        {
+                            "type": "CheckBox",
+                            "name": "HD Space Total",
+                            "caption": "HD Space Total"
+                        },
+
+                        {
+                            "type": "CheckBox",
+                            "name": "HD Space Used",
+                            "caption": "HD Space Used"
+                        },
+
+                        {
+                            "type": "CheckBox",
+                            "name": "HD Space Free",
+                            "caption": "HD Space Free"
                         }
                         
                     

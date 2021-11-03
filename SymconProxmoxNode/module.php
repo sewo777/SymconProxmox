@@ -17,6 +17,10 @@ declare(strict_types=1);
 			$this->RegisterPropertyBoolean('Memory Total', true);
 			$this->RegisterPropertyBoolean('Memory Used', true);
 			$this->RegisterPropertyBoolean('Memory Free', true);
+			$this->RegisterPropertyBoolean('HD Space Total', true);
+			$this->RegisterPropertyBoolean('HD Space Used', true);
+			$this->RegisterPropertyBoolean('HD Space Free', true);
+			
 
 
 			$this->RegisterPropertyString('Node', '');
@@ -102,6 +106,31 @@ declare(strict_types=1);
 				$this->UnregisterVariable("memory_free");
 			}
 
+			if ($this->ReadPropertyBoolean('HD Space Total') === true){
+				$this->RegisterVariableFloat('rootfs_total', $this->Translate('HD Space Total'), 'PVE_Speicher', 9);
+			}
+			else{
+				$this->UnregisterVariable("rootfs_total");
+			}
+
+			if ($this->ReadPropertyBoolean('HD Space Used') === true){
+				$this->RegisterVariableFloat('rootfs_used', $this->Translate('HD Space Used'), 'PVE_Speicher', 10);
+			}
+			else{
+				$this->UnregisterVariable("rootfs_used");
+			}
+
+			if ($this->ReadPropertyBoolean('HD Space Free') === true){
+				$this->RegisterVariableFloat('rootfs_free', $this->Translate('HD Space Free'), 'PVE_Speicher', 11);
+			}
+			else{
+				$this->UnregisterVariable("rootfs_free");
+			}
+
+			
+			
+			
+
 			//Never delete this line!
 			parent::ApplyChanges();
 		}
@@ -148,6 +177,16 @@ declare(strict_types=1);
 				$pve_cpus = ($json['data']['cpuinfo']['cpus']);
 				$cpu_usage = ($json['data']['cpu']);
 
+				
+				$rootfs_total= ($json['data']['rootfs']['total']);
+				$rootfs_total = $rootfs_total / pow(2,30);
+
+				$rootfs_used= ($json['data']['rootfs']['used']);
+				$rootfs_used = $rootfs_used / pow(2,30);
+
+				$rootfs_free= ($json['data']['rootfs']['free']);
+				$rootfs_free = $rootfs_free / pow(2,30);
+
 				if ($this->ReadPropertyBoolean('Uptime') === true){
 					SetValue($this->GetIDForIdent('pveuptime'),$this->Uptime($pve_uptime));
 				}
@@ -182,6 +221,20 @@ declare(strict_types=1);
 					
 				if ($this->ReadPropertyBoolean('Memory Free') === true){
 					SetValue($this->GetIDForIdent('memory_free'), $mem_free);
+				}
+
+				if ($this->ReadPropertyBoolean('HD Space Total') === true){
+					SetValue($this->GetIDForIdent('rootfs_total'), $rootfs_total);
+				}
+				
+	
+				if ($this->ReadPropertyBoolean('HD Space Used') === true){
+					SetValue($this->GetIDForIdent('rootfs_used'), $rootfs_used);
+				}
+				
+	
+				if ($this->ReadPropertyBoolean('HD Space Free') === true){
+					SetValue($this->GetIDForIdent('rootfs_free'), $rootfs_free);
 				}
 
 		}

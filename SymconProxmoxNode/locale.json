@@ -21,7 +21,10 @@
             "60 minutes": "60 Minuten",
             "CPU Usage": "CPU Auslastung",
             "Variables": "Variablen",
-            "Node": "Knoten"
+            "Node": "Knoten",
+            "HD Space Total" : "Speicherplatz Gesamt",
+            "HD Space Used" : "Speicherplatz in Benutzung",
+            "HD Space Free" : "Speicherplatz Verfügbar"
 
 
         }
