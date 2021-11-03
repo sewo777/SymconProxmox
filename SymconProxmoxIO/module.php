@@ -10,9 +10,10 @@ declare(strict_types=1);
 			$this->RegisterPropertyString('Username', '');
 			$this->RegisterPropertyString('Password', '');
 			$this->RegisterPropertyBoolean('Active', false);
-			// Attribute to store the token
+
 			$this->RegisterAttributeString('Token','');
-			$this->RegisterAttributeString('Tiket_Status','');
+			$this->RegisterAttributeString('Tiket_Status1','');
+			$this->RegisterAttributeString('Tiket_Status2','');
 
 			// timer to Update the Token 300000 = 300 s = 5 min
 			$this->RegisterTimer('UpdateToken', 1800000, 'PVEIO_ReNewToken($_IPS[\'TARGET\']);');
@@ -37,53 +38,105 @@ declare(strict_types=1);
 		{
 			$recived = json_decode($JSONString);
 			$data = utf8_decode($recived->Buffer);
-			//$this->SendDebug(__FUNCTION__, 'I got from the Node:' , 0);
-			//$this->SendDebug(__FUNCTION__,  $data, 0);
-			
+			$data = explode(';', $data);  //string zurück zu array
+						
+			//Token
 			$token = $this->ReadAttributeString('Token');
-			//$this->SendDebug(__FUNCTION__, 'I have this token:' , 0);
-			//$this->SendDebug(__FUNCTION__, $token , 0);
 
+			//Login Data
 			$url = $this->ReadPropertyString('Url');
 			$port = $this->ReadPropertyInteger('Port');
-
-
-			$curl = curl_init();
-
-            curl_setopt_array($curl, array(
-					CURLOPT_URL => 'https://'.$url.':'.$port.'/api2/json//nodes/'.$data.'/status',
-					CURLOPT_RETURNTRANSFER => 1,
-					CURLOPT_COOKIE => 'PVEAuthCookie='.$token,
-					CURLOPT_SSL_VERIFYPEER => false,
-				));
-
-			$result = curl_exec($curl);
-			$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-			if (curl_error($curl)) {
-    			echo 'Error:' . curl_error($curl);
-			}
-			
-			curl_close($curl);
-			$daten =  $result . PHP_EOL;
-			// Status 
-			$this->WriteAttributeString('Tiket_Status', $httpcode);
-
-			if ($httpcode == 200){
-
-				$returndata = $daten;
-			}
-			else {
-
-				$returndata = '';
-				//Renew Token 
-				$this->ReNewToken();
-
-			}
-			// now i can do somting with $data and $token
 			
 
-			//$this->SendDebug(__FUNCTION__, 'I send back to the node:' , 0);
-			//$this->SendDebug(__FUNCTION__, $returndata , 0);
+			//Node Name für Abfrage
+			if ($data[0] == 'NODE'){
+
+				$node = $data[1];
+
+				//Abfrage Nodes
+				$curl = curl_init();
+
+				curl_setopt_array($curl, array(
+						CURLOPT_URL => 'https://'.$url.':'.$port.'/api2/json//nodes/'.$node.'/status',
+						CURLOPT_RETURNTRANSFER => 1,
+						CURLOPT_COOKIE => 'PVEAuthCookie='.$token,
+						CURLOPT_SSL_VERIFYPEER => false,
+					));
+
+				$result = curl_exec($curl);
+				$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+				if (curl_error($curl)) {
+					echo 'Error:' . curl_error($curl);
+				}
+				
+				curl_close($curl);
+				$daten =  $result . PHP_EOL;
+				// Status 
+				$this->WriteAttributeString('Tiket_Status1', $httpcode);
+
+				if ($httpcode == 200){
+
+					$returndata = $daten;
+				}
+				else {
+
+					$returndata = '';
+					//Renew Token 
+					$this->ReNewToken();
+
+				}
+			}
+
+			//Abfrage ID's (Virtuelle Maschienen)
+			if ($data[0] == 'ID'){
+				
+				$node = $data[1];
+				$vmctid = $data[3];
+
+				if ($data[2] == 0){
+
+					$vmct = '/qemu';
+				}
+				if ($data[2] == 1){
+
+					$vmct = '/lxc';
+				}
+
+					//Abfrage ID's
+					$curl = curl_init();
+					
+					curl_setopt_array($curl, array(
+							CURLOPT_URL => 'https://'.$url.':'.$port.'/api2/json//nodes/'.$node.$vmct.'/'.$vmctid.'/status/current',
+							CURLOPT_RETURNTRANSFER => 1,
+							CURLOPT_COOKIE => 'PVEAuthCookie='.$token,
+							CURLOPT_SSL_VERIFYPEER => false,
+						));
+
+					$result = curl_exec($curl);
+					$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+					if (curl_error($curl)) {
+						echo 'Error:' . curl_error($curl);
+					}
+
+					curl_close($curl);
+					$daten =  $result . PHP_EOL;
+					// Status 
+					$this->WriteAttributeString('Tiket_Status2', $httpcode);
+
+					if ($httpcode == 200){
+
+						$returndata = $daten;
+						$this->SendDebug(__FUNCTION__, $returndata , 0);
+					}
+					else {
+
+						$returndata = '';
+						//Renew Token 
+						$this->ReNewToken();
+
+					}
+			}
+
 			
 			// send back to the node:
 			return $returndata;
@@ -97,9 +150,10 @@ declare(strict_types=1);
 		// this function runs cyclic as defined in create()
 		public function ReNewToken()
 		{
-			$status_tiket = $this->ReadAttributeString('Tiket_Status');
+			$status_tiket1 = $this->ReadAttributeString('Tiket_Status1');
+			$status_tiket2 = $this->ReadAttributeString('Tiket_Status2');
 
-			if ($status_tiket != 200){
+			if (($status_tiket1 != 200) or ($status_tiket2 != 200)){
 		
 			
 				$url = $this->ReadPropertyString('Url');
@@ -123,7 +177,6 @@ declare(strict_types=1);
 					echo 'Error:' . curl_error($curl);
 				}
 
-				//$this->SendDebug('ReNewToken()', 'Response:' . $result, 0);
 				
 				curl_close($curl);
 
@@ -142,7 +195,7 @@ declare(strict_types=1);
 				
 		}
 
-			if ($status_tiket == 200){
+			if (($status_tiket1 == 200) or ($status_tiket2 == 200)){
 
 				$this->SendDebug('ReNewToken()', 'Tiket Valid '  , 0);
 

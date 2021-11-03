@@ -6,6 +6,30 @@
 			"caption": "Node"
 			
 		},
+        
+        {
+            "type": "Select",
+            "name": "VM or LXC",
+            "caption": "VM or LXC",
+            "options": [
+                {
+                    "label": "VM",
+                    "value": 0
+                },
+                {
+                    "label": "LXC",
+                    "value": 1
+                }
+            ]
+        },
+        
+        
+        {
+			"type": "NumberSpinner",
+			"name": "VM/LXC ID",
+			"caption": "VM/LXC ID"
+			
+		},
         {
             "type": "Select",
             "name": "UpdateInterval",
@@ -51,62 +75,68 @@
         },
         {
             "type": "ExpansionPanel",
-            "caption": "Variables",
+            "caption": "Default variables",
             "items": [
                 {
                             "type": "CheckBox",
                             "name": "Uptime",
                             "caption": "Uptime"
                         },
-
-                        {
-                            "type": "CheckBox",
-                            "name": "CPU",
-                            "caption": "CPU"
-                        },
                         
                         {
                             "type": "CheckBox",
-                            "name": "CPU Usage",
-                            "caption": "CPU Usage"
+                            "name": "Name",
+                            "caption": "Name"
                         },
-
                         {
                             "type": "CheckBox",
-                            "name": "CPU Sockets",
-                            "caption": "CPU Sockets"
-                        },
-
-                        {
-                            "type": "CheckBox",
-                            "name": "CPU Cores",
-                            "caption": "CPU Cores"
-                        },
+                            "name": "Status",
+                            "caption": "Status"
+                        }
+                    
+                
+            ]
+        },
+        {
+            "type": "ExpansionPanel",
+            "caption": "Additional Variables",
+            "items": [
 
                         {
                             "type": "CheckBox",
                             "name": "CPU(s)",
                             "caption": "CPU(s)"
                         },
+                
+                        {
+                            "type": "Label",
+                            "caption": "Memory:"
+                        },    
 
                         {
                             "type": "CheckBox",
                             "name": "Memory Total",
                             "caption": "Memory Total"
                         },
-
                         {
                             "type": "CheckBox",
                             "name": "Memory Used",
                             "caption": "Memory Used"
                         },
-
+                        {
+                            "type": "Label",
+                            "caption": "Root Disk:    Note: The Variable (Root Disk Used) is not available at VM's"
+                        }, 
                         {
                             "type": "CheckBox",
-                            "name": "Memory Free",
-                            "caption": "Memory Free"
+                            "name": "Root Disk Size",
+                            "caption": "Root Disk Storage Size"
+                        },
+                        {
+                            "type": "CheckBox",
+                            "name": "Root Disk Used",
+                            "caption": "Root Disk Storage Used"
                         }
-                        
                     
                 
             ]
@@ -116,7 +146,7 @@
         {
         "type": "Button",
         "label": "Update",
-        "onClick": "PVENODE_Update($id);"           
+        "onClick": "PVEID_Update($id);"           
     }
 ],
     "status": []

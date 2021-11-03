@@ -3,12 +3,16 @@
         "de": {
             "Memory Total": "RAM Gesamt",
             "Memory Used": "RAM Auslastung",
-            "Memory Free": "RAM Verfügbar",
             "Uptime": "Betriebszeit",
             "CPU": "CPU",
-            "CPU Sockets": "CPU Sockel",
-            "CPU Cores": "CPU Kerne",
-            "CPU(s)": "CPU(s)",
+            "Name": "Name",
+            "Status": "Status",
+            "Default variables": "Standard Varaiblen",
+            "Additional Variables" : "Zusatz Variablen",
+            "Root Disk Storage Used" : "Bootdisk in Benutzung",
+            "Root Disk Storage Size" : "Bootdisk Größe",
+            "Root Disk:    Note: The Variable (Root Disk Used) is not available at VM's" : "Root Disk:    Hinweis: Die Variable (Root Disk Verwendet) ist bei VM's nicht verfügbar",
+            "VM or LXC": "VM oder LXC",
             "Update Interval": "Aktualisierungsintervall",
             "disabled" : "Deaktiviert",
             "30 seconds": "30 Sekunden",
@@ -19,11 +23,9 @@
             "15 minutes": "15 Minuten",
             "30 minutes": "30 Minuten",
             "60 minutes": "60 Minuten",
-            "CPU Usage": "CPU Auslastung",
-            "Variables": "Variablen",
+            "Running": "Aktiv",
+            "Stoped": "Gestoppt",
             "Node": "Knoten"
-
-
         }
     }
 }

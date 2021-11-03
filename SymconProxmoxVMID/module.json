@@ -1,0 +1,16 @@
+{
+    "id": "{5B037CDA-4B3C-5BC0-D3CF-3354DA40BF12}",
+    "name": "SymconProxmoxVMID",
+    "type": 3,
+    "vendor": "Proxmox",
+    "aliases": ["ProxmoxVMID"],
+    "parentRequirements": [
+        "{A8F28772-131A-351B-DEC1-BA2995EAE4C3}"
+    ],
+    "childRequirements": [],
+    "implemented": [
+        "{F32EAE78-97AA-E390-804A-8600121F361A}"
+    ],
+    "prefix": "PVEID",
+    "url": ""
+}
