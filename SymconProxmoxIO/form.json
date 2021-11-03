@@ -3,7 +3,7 @@
 				{
 			"type": "ValidationTextBox",
 			"name": "Url",
-			"caption": "URL"
+			"caption": "IP"
 			
 		},
         {
