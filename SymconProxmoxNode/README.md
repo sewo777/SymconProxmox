@@ -20,10 +20,6 @@ Auslesen der Betriebsdaten vom Knoten (Node)
 - IP-Symcon ab Version 5.5
 - [SymconProxmoxIO](https://github.com/sewo777/SymconProxmox/tree/main/SymconProxmoxIO#readme)
 
-### 3. Software-Installation
-
-* Über den Module Store das 'SymconProxmoxNode'-Modul installieren.
-* Alternativ über das Module Control folgende URL hinzufügen
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
@@ -34,7 +30,7 @@ __Konfigurationsseite__:
 
 Name     | Beschreibung
 -------- | ------------------
-         |
+Knoten   | Name von Knoten (Node)
          |
 
 ### 5. Statusvariablen und Profile
