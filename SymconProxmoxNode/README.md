@@ -39,8 +39,8 @@ Die Statusvariablen werden automatisch angelegt und können in der Instanzeinste
 
 Name   | Typ     | Beschreibung
 ------ | ------- | ------------
-Betriebszeit | String | Betriebszeiz vom Knoten
-CPU | String | CPU Bezeichning
+Betriebszeit | String | Betriebszeit vom Knoten
+CPU | String | CPU Bezeichnung
 CPU Auslastung | Float | Auslastung der CPU in %
 CPU Sockel | Integer | Anzahl CPU Sockel im System
 CPU Kerne | Integer | Anzahl CPU Kerne im System
