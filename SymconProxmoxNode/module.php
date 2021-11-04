@@ -158,7 +158,8 @@ declare(strict_types=1);
 			$status_json = (json_last_error() == JSON_ERROR_NONE);
 			//$this->SendDebug(__FUNCTION__,  $status_json , 0);
 
-			if ($status_json == true) {
+			if ($status_json == true) 
+			{
 
 				$mem_total = ($json['data']['memory']['total']);
 				$mem_total = $mem_total / pow(2,30);
@@ -237,7 +238,7 @@ declare(strict_types=1);
 					SetValue($this->GetIDForIdent('rootfs_free'), $rootfs_free);
 				}
 
-		}
+			}
 
 		}
 
