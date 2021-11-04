@@ -33,7 +33,7 @@ Aktualisierungsintervall | Intervall Daten auslesen
 
 ### 4. Statusvariablen und Profile
 
-Die Statusvariablen/Kategorien werden automatisch angelegt und können in der Instanzeinstellung Deaktiviert werden.
+Die Statusvariablen werden automatisch angelegt und können in der Instanzeinstellung Deaktiviert werden.
 
 #### Statusvariablen
 
