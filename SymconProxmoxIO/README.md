@@ -13,7 +13,7 @@ Beschreibung des Moduls.
 
 ### 1. Funktionsumfang
 
-*
+* Verbindung zum Proxmox Server.
 
 ### 2. Vorraussetzungen
 
