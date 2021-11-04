@@ -35,38 +35,10 @@ __Konfigurationsseite__:
 
 Name     | Beschreibung
 -------- | ------------------
-IP       | IP Adresse Server
+IP       | IP Adresse vom Proxmox Server
 Port     | Port
 Username | Benutzer
 Password | Passwort
 
 
-### 5. Statusvariablen und Profile
 
-Die Statusvariablen/Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
-
-#### Statusvariablen
-
-Name   | Typ     | Beschreibung
------- | ------- | ------------
-       |         |
-       |         |
-
-#### Profile
-
-Name   | Typ
------- | -------
-       |
-       |
-
-### 6. WebFront
-
-Die Funktionalität, die das Modul im WebFront bietet.
-
-### 7. PHP-Befehlsreferenz
-
-`boolean PVEIO_BeispielFunktion(integer $InstanzID);`
-Erklärung der Funktion.
-
-Beispiel:
-`PVEIO_BeispielFunktion(12345);`
