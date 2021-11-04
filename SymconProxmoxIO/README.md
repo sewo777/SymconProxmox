@@ -1,5 +1,4 @@
 # SymconProxmoxIO
-Beschreibung des Moduls.
 
 ### Inhaltsverzeichnis
 
