@@ -1,5 +1,4 @@
 # SymconProxmoxNode
-Beschreibung des Moduls.
 
 ### Inhaltsverzeichnis
 
