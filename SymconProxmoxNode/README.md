@@ -31,7 +31,7 @@ __Konfigurationsseite__:
 Name     | Beschreibung
 -------- | ------------------
 Knoten   | Name von Knoten (Node)
-         |
+Aktualisierungsintervall | Intervall Daten auslesen        |
 
 ### 5. Statusvariablen und Profile
 
