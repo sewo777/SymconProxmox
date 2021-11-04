@@ -23,6 +23,7 @@ Verbindungsaufbau zum Proxmox Server. Dabei wird vom Proxmox Server der Ticket &
 ### 3. Software-Installation
 
 * Über das Module Control folgende URL hinzufügen
+* https://github.com/sewo777/SymconProxmox
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
