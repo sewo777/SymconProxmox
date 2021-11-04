@@ -19,6 +19,7 @@ Auslesen der Betriebsdaten vom Knoten (Node)
 
 - IP-Symcon ab Version 5.5
 - [SymconProxmoxIO](SymconProxmoxIO)
+- - __SymconProxmoxNode__ ([Dokumentation](SymconProxmoxNode)) 
 
 ### 3. Software-Installation
 
