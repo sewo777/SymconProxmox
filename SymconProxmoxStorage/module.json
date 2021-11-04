@@ -1,0 +1,16 @@
+{
+    "id": "{8AA1DE3A-F637-8C36-F102-28FF5B0362C4}",
+    "name": "SymconProxmoxStorage",
+    "type": 3,
+    "vendor": "Proxmox",
+    "aliases": ["ProxmoxStorage"],
+    "parentRequirements": [
+        "{A8F28772-131A-351B-DEC1-BA2995EAE4C3}"
+    ],
+    "childRequirements": [],
+    "implemented": [
+        "{F32EAE78-97AA-E390-804A-8600121F361A}"
+    ],
+    "prefix": "PVESTORAGE",
+    "url": ""
+}
