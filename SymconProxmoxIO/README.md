@@ -39,6 +39,7 @@ Port     | Port
 Username | Benutzer
 Password | Passwort
 
+
 ### 5. Statusvariablen und Profile
 
 Die Statusvariablen/Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
