@@ -5,7 +5,7 @@ Beschreibung des Moduls.
 
 1. [Funktionsumfang](#1-funktionsumfang)
 2. [Voraussetzungen](#2-voraussetzungen)
-3. [Software-Installation](#3-software-installation)
+3 [Software-Installation](#3-software-installation)
 4. [Einrichten der Instanzen in IP-Symcon](#4-einrichten-der-instanzen-in-ip-symcon)
 
 
@@ -17,6 +17,7 @@ Verbindungsaufbau zum Proxmox Server. Dabei wird vom Proxmox Server der Ticket &
 
 - IP-Symcon ab Version 5.5
 - Proxmox ab Version 6
+
 
 ### 3. Software-Installation
 
