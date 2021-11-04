@@ -13,16 +13,16 @@ Beschreibung des Moduls.
 
 ### 1. Funktionsumfang
 
-* Verbindung zum Proxmox Server.
+Verbindungsaufbau zum Proxmox Server. Dabei wird vom Proxmox Server der Ticket & Token Abgefragt.
 
 ### 2. Vorraussetzungen
 
 - IP-Symcon ab Version 5.5
+- Proxmox ab Version 6
 
 ### 3. Software-Installation
 
-* Über den Module Store das 'SymconProxmoxIO'-Modul installieren.
-* Alternativ über das Module Control folgende URL hinzufügen
+* Über das Module Control folgende URL hinzufügen
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
