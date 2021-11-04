@@ -30,19 +30,29 @@ __Konfigurationsseite__:
 
 Name     | Beschreibung
 -------- | ------------------
-Knoten   | Name von Knoten (Node)
+Knoten   | Name vom Knoten (Node)
 Aktualisierungsintervall | Intervall Daten auslesen        |
 
 ### 5. Statusvariablen und Profile
 
-Die Statusvariablen/Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
+Die Statusvariablen/Kategorien werden automatisch angelegt und können in der Instanzeinstellung Deaktiviert werden.
 
 #### Statusvariablen
 
 Name   | Typ     | Beschreibung
 ------ | ------- | ------------
-       |         |
-       |         |
+Betriebszeit | String | Betriebszeiz vom Knoten
+CPU | String | CPU Bezeichning
+CPU Auslastung | Float | Auslastung der CPU in %
+CPU Sockel | Integer | Anzahl CPU Sockel im System
+CPU Kerne | Integer | Anzahl CPU Kerne im System
+CPU(s) | Integer | Anzahl CPU's Gesamt
+RAM Gesamt | Float | RAM Speicher im System
+RAM Auslastung | Float | Speicher in Benutzung
+RAM Verfügbar | Float | Verfügbarer RAM Speicher 
+Speicherplatz Gesamt | Float | HD Speicher Gesamt von Root
+Speicherplatz in Benutzung | Float | HD Speicher in Benutzung
+Speicherplatz Verfügbar | Float | HD Speicher in Verfügbar
 
 #### Profile
 
