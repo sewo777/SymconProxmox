@@ -14,6 +14,7 @@ declare(strict_types=1);
 			$this->RegisterAttributeString('Token','');
 			$this->RegisterAttributeString('Tiket_Status1','');
 			$this->RegisterAttributeString('Tiket_Status2','');
+			$this->RegisterAttributeString('Tiket_Status3','');
 
 			// timer to Update the Token 300000 = 300 s = 5 min
 			$this->RegisterTimer('UpdateToken', 1800000, 'PVEIO_ReNewToken($_IPS[\'TARGET\']);');
@@ -39,6 +40,9 @@ declare(strict_types=1);
 			$recived = json_decode($JSONString);
 			$data = utf8_decode($recived->Buffer);
 			$data = explode(';', $data);  //string zurück zu array
+
+			
+
 						
 			//Token
 			$token = $this->ReadAttributeString('Token');
@@ -48,8 +52,63 @@ declare(strict_types=1);
 			$port = $this->ReadPropertyInteger('Port');
 			
 
+			// if ($data[0] == 'STORAGE'){
+
+			// 	$returndata = '';
+
+			// 	$this->SendDebug(__FUNCTION__,  $data[2] , 0);
+
+
+			// }
+
+
+			//Abfrage Storage
+			if ($data[0] == 'STORAGE')
+			{
+
+				$node = $data[1];
+				$storage_name = $data[2];
+
+				//Abfrage Storage
+				$curl = curl_init();
+
+				curl_setopt_array($curl, array(
+						CURLOPT_URL => 'https://'.$url.':'.$port.'/api2/json//nodes/'.$node.'/storage'.'/'.$storage_name.'/status',
+						CURLOPT_RETURNTRANSFER => 1,
+						CURLOPT_COOKIE => 'PVEAuthCookie='.$token,
+						CURLOPT_SSL_VERIFYPEER => false,
+					));
+
+				$result = curl_exec($curl);
+				$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+				if (curl_error($curl)) {
+					echo 'Error:' . curl_error($curl);
+				}
+				
+				curl_close($curl);
+				$daten =  $result . PHP_EOL;
+				$this->SendDebug(__FUNCTION__,  $daten , 0);
+				// Status 
+				$this->WriteAttributeString('Tiket_Status3', $httpcode);
+
+				if ($httpcode == 200){
+
+					$returndata = $daten;
+				}
+				else {
+
+					$returndata = '';
+					//Renew Token 
+					$this->ReNewToken();
+
+				}
+			}
+
+
+
 			//Node Name für Abfrage
-			if ($data[0] == 'NODE'){
+			if ($data[0] == 'NODE')
+			{
 
 				$node = $data[1];
 
@@ -88,7 +147,8 @@ declare(strict_types=1);
 			}
 
 			//Abfrage ID's (Virtuelle Maschienen)
-			if ($data[0] == 'ID'){
+			if ($data[0] == 'ID')
+			{
 				
 				$node = $data[1];
 				$vmctid = $data[3];
@@ -152,8 +212,9 @@ declare(strict_types=1);
 		{
 			$status_tiket1 = $this->ReadAttributeString('Tiket_Status1');
 			$status_tiket2 = $this->ReadAttributeString('Tiket_Status2');
+			$status_tiket3 = $this->ReadAttributeString('Tiket_Status3');
 
-			if (($status_tiket1 != 200) or ($status_tiket2 != 200)){
+			if (($status_tiket1 != 200) or ($status_tiket2 != 200) or ($status_tiket3 != 200)) {
 		
 			
 				$url = $this->ReadPropertyString('Url');
