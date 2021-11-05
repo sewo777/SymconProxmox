@@ -77,13 +77,14 @@ declare(strict_types=1);
 				
 				curl_close($curl);
 				$daten =  $result . PHP_EOL;
-				$this->SendDebug(__FUNCTION__,  $daten , 0);
+			
 				// Status 
 				$this->WriteAttributeString('Tiket_Status3', $httpcode);
 
 				if ($httpcode == 200){
 
 					$returndata = $daten;
+					$this->SendDebug(__FUNCTION__, $returndata , 0);
 				}
 				else {
 
@@ -126,6 +127,7 @@ declare(strict_types=1);
 				if ($httpcode == 200){
 
 					$returndata = $daten;
+					$this->SendDebug(__FUNCTION__, $returndata , 0);
 				}
 				else {
 
