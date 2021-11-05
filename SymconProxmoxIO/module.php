@@ -52,16 +52,6 @@ declare(strict_types=1);
 			$port = $this->ReadPropertyInteger('Port');
 			
 
-			// if ($data[0] == 'STORAGE'){
-
-			// 	$returndata = '';
-
-			// 	$this->SendDebug(__FUNCTION__,  $data[2] , 0);
-
-
-			// }
-
-
 			//Abfrage Storage
 			if ($data[0] == 'STORAGE')
 			{
@@ -256,7 +246,7 @@ declare(strict_types=1);
 				
 		}
 
-			if (($status_tiket1 == 200) or ($status_tiket2 == 200)){
+			if (($status_tiket1 == 200) or ($status_tiket2 == 200) or ($status_tiket3 == 200)){
 
 				$this->SendDebug('ReNewToken()', 'Tiket Valid '  , 0);
 
