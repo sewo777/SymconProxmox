@@ -66,7 +66,8 @@ declare(strict_types=1);
 						CURLOPT_URL => 'https://'.$url.':'.$port.'/api2/json//nodes/'.$node.'/storage'.'/'.$storage_name.'/status',
 						CURLOPT_RETURNTRANSFER => 1,
 						CURLOPT_COOKIE => 'PVEAuthCookie='.$token,
-						CURLOPT_SSL_VERIFYPEER => false,
+						CURLOPT_SSL_VERIFYPEER => FALSE,
+						CURLOPT_SSL_VERIFYHOST=> FALSE,
 					));
 
 				$result = curl_exec($curl);
@@ -110,7 +111,8 @@ declare(strict_types=1);
 						CURLOPT_URL => 'https://'.$url.':'.$port.'/api2/json//nodes/'.$node.'/status',
 						CURLOPT_RETURNTRANSFER => 1,
 						CURLOPT_COOKIE => 'PVEAuthCookie='.$token,
-						CURLOPT_SSL_VERIFYPEER => false,
+						CURLOPT_SSL_VERIFYPEER => FALSE,
+						CURLOPT_SSL_VERIFYHOST=> FALSE,
 					));
 
 				$result = curl_exec($curl);
@@ -161,7 +163,8 @@ declare(strict_types=1);
 							CURLOPT_URL => 'https://'.$url.':'.$port.'/api2/json//nodes/'.$node.$vmct.'/'.$vmctid.'/status/current',
 							CURLOPT_RETURNTRANSFER => 1,
 							CURLOPT_COOKIE => 'PVEAuthCookie='.$token,
-							CURLOPT_SSL_VERIFYPEER => false,
+							CURLOPT_SSL_VERIFYPEER => FALSE,
+							CURLOPT_SSL_VERIFYHOST=> FALSE,
 						));
 
 					$result = curl_exec($curl);
@@ -221,7 +224,8 @@ declare(strict_types=1);
 						CURLOPT_RETURNTRANSFER => 1,
 						CURLOPT_POST => 1,
 						CURLOPT_POSTFIELDS => 'username='.$username.'@pam&password='.$password,
-						CURLOPT_SSL_VERIFYPEER => false,
+						CURLOPT_SSL_VERIFYPEER => FALSE,
+						CURLOPT_SSL_VERIFYHOST=> FALSE,
 					));
 
 				$result = curl_exec($curl);
